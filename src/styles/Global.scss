@@ -1,65 +1,118 @@
 $primary-color: white;
-$text-color: #7E00D8;
 $max-roxo: #7E00D8;
 
+@import url('https://fonts.googleapis.com/css2?family=Oriole&display=swap');
 
-body {
-  margin: 5px;
+// Estilos globais
+* {
+  margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
+// Estilos globais
+body {
+  background-image: linear-gradient(#7E00D8, rgb(0, 140, 255));
+}
+
+// Estilos globais
 .app {
   display: flex;
-  height: 100vh; // Ocupa toda a altura da tela
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 0.1138em;
+  text-decoration: inherit;
+  text-transform: inherit;
+  box-sizing: border-box;
 }
 
+// estilos do container principal
 #root {
-  height: calc(100vh - 16px);
+  height: (100vh - 4vh);
   background-color: $primary-color;
   border-radius: 30px;
-  overflow: hidden; // 
-  border: solid 3px $max-roxo;
+  overflow: hidden;
+  margin: 2vh;
 }
 
+// estilos da barra lateral
 .sidebar {
   display: flex;
   width: 300px;
   flex-direction: column;
-  border-right: 2.5px solid $max-roxo; // Bordar branca de 1px no lado direito
-  height: 100%; // Altura total do elemento pai
+  border-right: 2.5px solid #ccc;
+  height: 100%;
 
   ul {
-    list-style-type: none; // Remover as bolinhas da lista
+    list-style-type: none;
     padding: 20px;
 
     li {
+      position: relative;
+
       a {
-        color: $text-color;
         display: block;
-        padding: 15px;
+        padding: 25px;
         text-decoration: none;
         transition: all 0.3s;
+        position: relative;
 
         &:hover {
           font-weight: bold;
-          color: $text-color
         }
 
         &.active {
-          background-color: #7E00D8;
+          font-weight: bold;
+          background-color: $max-roxo;
           color: #fff;
+          border-radius: 10px;
+        }
+
+        &:not(.active) {
+          color: #ccc;
+        }
+
+        .icon {
+          margin-right: 20px;
         }
       }
     }
   }
 
+  @media screen and (max-width: 768px) {
+    width: auto;
+
+    ul {
+      li {
+        a {
+          padding: 15px;
+
+          // centraliza o icone
+          .icon {
+            margin-right: auto;
+            margin-left: auto;
+            height: 15px;
+          }
+
+          span {
+            display: none;
+          }
+        }
+      }
+    }
+  }
 }
+
 
 .content {
   flex: 1; // O conteúdo ocupa o espaço restante
   padding: 20px;
+  overflow: scroll;
 }
-
 
 // Estilos para os vídeos
 .videos-container {
@@ -70,7 +123,6 @@ body {
     position: relative;
     width: 300px;
     padding: 20px;
-    background-color: #f8f8f8;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     border: 2px solid $max-roxo;
@@ -83,7 +135,6 @@ body {
 
     .video-thumbnail {
       width: 100%;
-      height: 200px;
       object-fit: cover;
       border-radius: 5px;
       margin-bottom: 10px;
@@ -129,8 +180,8 @@ body {
     border: none;
     border-radius: 4px;
     padding: 8px 16px;
+    margin: 0px 20px 0px 0px;
     cursor: pointer;
-    margin-bottom: 30px;
 
     &:hover {
       background-color: #6A00A3;
@@ -138,14 +189,10 @@ body {
   }
 }
 
-
 // Estilos do modal
 .modal {
   background-color: #fff;
-  border-radius: 8px;
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 50px 200px 50px 200PX;
+  padding: 50px 200px 50px 200px;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -170,7 +217,6 @@ body {
     }
 
     input {
-      width: 100%;
       padding: 5px;
       border: 1px solid #ccc;
       border-radius: 4px;
@@ -178,11 +224,10 @@ body {
 
     .buttons {
       margin-top: 20px;
-      text-align: right;
 
       button {
         margin-left: 10px;
-        padding: 8px 16px;
+        padding: 10px 16px;
         background-color: #7E00D8;
         color: #fff;
         border: none;
@@ -202,6 +247,55 @@ body {
           }
         }
       }
+    }
+  }
+}
+
+.users-page {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  .add-button {
+    background-color: #7E00D8;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    margin: 0px 20px 0px 0px;
+
+    cursor: pointer;
+    margin-bottom: 30px;
+
+    &:hover {
+      background-color: #6A00A3;
+    }
+  }
+
+  table.user-table {
+    border-collapse: collapse;
+    margin-right: 20px;
+    border: 2px solid #7E00D8;
+
+    th,
+    td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #7E00D8;
+    }
+
+    th {
+      background-color: #7E00D8;
+      color: #fff;
+    }
+  }
+
+  ul {
+    list-style-type: none;
+    margin-bottom: 20px;
+
+    li {
+      margin-bottom: 10px;
     }
   }
 }
