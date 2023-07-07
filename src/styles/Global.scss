@@ -1,0 +1,207 @@
+$primary-color: white;
+$text-color: #7E00D8;
+$max-roxo: #7E00D8;
+
+
+body {
+  margin: 5px;
+  padding: 0;
+}
+
+.app {
+  display: flex;
+  height: 100vh; // Ocupa toda a altura da tela
+}
+
+#root {
+  height: calc(100vh - 16px);
+  background-color: $primary-color;
+  border-radius: 30px;
+  overflow: hidden; // 
+  border: solid 3px $max-roxo;
+}
+
+.sidebar {
+  display: flex;
+  width: 300px;
+  flex-direction: column;
+  border-right: 2.5px solid $max-roxo; // Bordar branca de 1px no lado direito
+  height: 100%; // Altura total do elemento pai
+
+  ul {
+    list-style-type: none; // Remover as bolinhas da lista
+    padding: 20px;
+
+    li {
+      a {
+        color: $text-color;
+        display: block;
+        padding: 15px;
+        text-decoration: none;
+        transition: all 0.3s;
+
+        &:hover {
+          font-weight: bold;
+          color: $text-color
+        }
+
+        &.active {
+          background-color: #7E00D8;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+}
+
+.content {
+  flex: 1; // O conteúdo ocupa o espaço restante
+  padding: 20px;
+}
+
+
+// Estilos para os vídeos
+.videos-container {
+  display: flex;
+  flex-wrap: wrap;
+
+  .video-card {
+    position: relative;
+    width: 300px;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    border: 2px solid $max-roxo;
+    cursor: pointer;
+    margin: 20px;
+
+    &:hover {
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+    }
+
+    .video-thumbnail {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .video-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: $max-roxo;
+      text-overflow: ellipsis;
+    }
+
+    .video-description {
+      font-size: 14px;
+      margin-bottom: 10px;
+      text-overflow: ellipsis;
+    }
+
+    .delete-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 18px;
+      color: $max-roxo;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      background-color: #f8f8f8;
+    }
+  }
+}
+
+.videos {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  // Estilos do botão "Adicionar Vídeo"
+  .add-button {
+    background-color: #7E00D8;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+    margin-bottom: 30px;
+
+    &:hover {
+      background-color: #6A00A3;
+    }
+  }
+}
+
+
+// Estilos do modal
+.modal {
+  background-color: #fff;
+  border-radius: 8px;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 50px 200px 50px 200PX;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  border: #7E00D8 2px solid;
+
+  h2 {
+    margin-bottom: 10px;
+  }
+
+  form {
+    margin-top: 20px;
+
+    div {
+      margin-bottom: 10px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .buttons {
+      margin-top: 20px;
+      text-align: right;
+
+      button {
+        margin-left: 10px;
+        padding: 8px 16px;
+        background-color: #7E00D8;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #6A00A3;
+        }
+
+        &:last-child {
+          background-color: #ccc;
+          color: #fff;
+
+          &:hover {
+            background-color: #999;
+          }
+        }
+      }
+    }
+  }
+}
