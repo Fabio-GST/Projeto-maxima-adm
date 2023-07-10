@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Sidebar from './Sidebar';
-import UsersPage from './UsersPage';
-import VideosPage from './VideosPage';
+import UsersPage from './usuario/UsersPage';
+import VideosPage from './videos/VideosPage';
 import LogsPage from './LogsPage';
 import PostagensPage from './PostagensPage';
 import SairPage from './SairPage';
