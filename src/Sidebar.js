@@ -4,8 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUsers, faVideo, faClipboardList, faNewspaper } from '@fortawesome/free-solid-svg-icons';
 
 
+// cria um componente Sidebar
 const Sidebar = () => {
+    // obtém a localização atual da página (pathname)
     const location = useLocation();
+
+    // retorna a barra lateral com os links para as páginas
     return (
         <div className="sidebar">
             <ul>
