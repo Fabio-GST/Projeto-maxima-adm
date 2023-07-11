@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
-import UserServices from './UserServices';
+import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 
 const UserModal = ({ isOpen, onClose, selectedUser, onSave }) => {
+
   const [nome, setNome] = useState(selectedUser ? selectedUser.nome : '');
   const [login, setLogin] = useState(selectedUser ? selectedUser.login : '');
-  const [token, setToken] = useState(selectedUser ? selectedUser.token : '');
   const [senha, setSenha] = useState(selectedUser ? selectedUser.senha : '');
 
   const handleSave = () => {
-    const user = { nome, login, token, ativo: true, senha };
+    const user = { nome, login, ativo: true, senha };
 
     if (selectedUser) {
       onSave(selectedUser.id, user);
@@ -23,10 +22,21 @@ const UserModal = ({ isOpen, onClose, selectedUser, onSave }) => {
   const resetForm = () => {
     setNome('');
     setLogin('');
-    setToken('');
     setSenha('');
-
   };
+
+  // carregar o modal com os dados do usuário selecionado
+  useEffect(() => {
+    if (selectedUser) {
+      setNome(selectedUser.nome);
+      setLogin(selectedUser.login);
+      setSenha(selectedUser.senha);
+    }
+    else {
+      resetForm();
+    }
+  }, [selectedUser]);
+
 
   return (
     <Modal isOpen={isOpen} onRequestClose={onClose} contentLabel="Adicionar/Editar Usuário">
@@ -41,14 +51,9 @@ const UserModal = ({ isOpen, onClose, selectedUser, onSave }) => {
           <input type="text" value={login} onChange={(e) => setLogin(e.target.value)} />
         </div>
         <div>
-          <label>Token:</label>
-          <input type="text" value={token} onChange={(e) => setToken(e.target.value)} />
-        </div>
-        <div>
           <label>Senha:</label>
           <input type="password" value={senha} onChange={(e) => setSenha(e.target.value)} />
         </div>
-        
         <div className="buttons">
           <button type="button" onClick={handleSave}>
             {selectedUser ? 'Salvar' : 'Adicionar'}

@@ -83,6 +83,7 @@ const UsersPage = () => {
             <th>Nome</th>
             <th>Login</th>
             <th>Token</th>
+            <th>ultimo acesso</th>
             <th>Ações</th>
           </tr>
         </thead>
@@ -92,6 +93,7 @@ const UsersPage = () => {
               <td>{user.nome}</td>
               <td>{user.login}</td>
               <td>{user.token}</td>
+              <td>{user.ultimoAcesso}</td>
               <td>
                 <button onClick={() => openEditModal(user)}>Editar</button>
                 <button onClick={() => handleDeleteUser(user.id)}>Excluir</button>

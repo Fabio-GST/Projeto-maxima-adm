@@ -41,6 +41,7 @@ const VideoServices = {
       throw error;
     }
   },
+
 };
 
 export default VideoServices;

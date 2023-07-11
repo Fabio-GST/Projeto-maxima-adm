@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUsers, faVideo, faClipboardList, faNewspaper, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faUsers, faVideo, faClipboardList, faNewspaper } from '@fortawesome/free-solid-svg-icons';
 
 
 const Sidebar = () => {
@@ -29,6 +29,15 @@ const Sidebar = () => {
                 </li>
                 <li>
                     <Link
+                        to="/tags"
+                        className={`nav-link ${location.pathname === '/tags' ? 'active' : ''}`}
+                    >
+                        <FontAwesomeIcon icon={faNewspaper} className="icon" />
+                        <span>Tags</span>
+                    </Link>
+                </li>
+                <li>
+                    <Link
                         to="/logs"
                         className={`nav-link ${location.pathname === '/logs' ? 'active' : ''}`}
                     >
@@ -46,15 +55,7 @@ const Sidebar = () => {
                         <span>Postagens</span>
                     </Link>
                 </li>
-                <li>
-                    <Link
-                        to="/sair"
-                        className={`nav-link ${location.pathname === '/sair' ? 'active' : ''}`}
-                    >
-                        <FontAwesomeIcon icon={faSignOutAlt} className="icon" />
-                        <span>Sair</span>
-                    </Link>
-                </li>
+               
             </ul>
         </div>
     );

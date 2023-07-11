@@ -5,8 +5,8 @@ import UsersPage from './usuario/UsersPage';
 import VideosPage from './videos/VideosPage';
 import LogsPage from './LogsPage';
 import PostagensPage from './PostagensPage';
-import SairPage from './SairPage';
 import './styles/Global.scss'; // Importe o arquivo de estilos SCSS
+import TagsPage from 'tags/TagsPage';
 
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
                         <Route path="/videos" element={<VideosPage />} />
                         <Route path="/logs" element={<LogsPage />} />
                         <Route path="/postagens" element={<PostagensPage />} />
-                        <Route path="/sair" element={<SairPage />} />
+                        <Route path="/tags" element={<TagsPage />} />
                     </Routes>
                 </div>
             </Router>

@@ -33,6 +33,17 @@ const UserServices = {
       throw error;
     }
   },
+
+  deleteUser: async (userId) => {
+    try {
+      const url = `${BASE_URL}/${userId}`;
+      const response = await axios.delete(url);
+      return response.data;
+    } catch (error) {
+      console.error('Error deleting user:', error);
+      throw error;
+    }
+  }
 };
 
 export default UserServices;

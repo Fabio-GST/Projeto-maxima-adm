@@ -15,6 +15,7 @@ const VideoModal = ({ isOpen, video, onClose, onSave }) => {
     const [videoViews, setVideoViews] = useState(0);
     const [videoLikes, setVideoLikes] = useState(0);
     const [isFormValid, setIsFormValid] = useState(false);
+    const [videoTags, setVideoTags] = useState([]);
 
     useEffect(() => {
         if (video) {
@@ -108,6 +109,13 @@ const VideoModal = ({ isOpen, video, onClose, onSave }) => {
         setVideoLikes(e.target.value);
     };
 
+    const handleVideoTagsChange = (e) => {
+        // Separa as tags por vírgula
+        const tags = e.target.value.split(',');
+        setVideoTags(tags);
+    };
+
+
 
     const handleSave = async () => {
         const editedVideo = {
@@ -121,6 +129,7 @@ const VideoModal = ({ isOpen, video, onClose, onSave }) => {
             views: videoViews,
             likes: videoLikes,
             dislikes: 0,
+            tags: [...videoTags],
         };
 
         try {
@@ -143,6 +152,7 @@ const VideoModal = ({ isOpen, video, onClose, onSave }) => {
             setVideoThumbnail('');
             setVideoViews(0);
             setVideoLikes(0);
+            setVideoTags([]);
 
 
         } catch (error) {
@@ -242,6 +252,10 @@ const VideoModal = ({ isOpen, video, onClose, onSave }) => {
                 <div>
                     <label>Likes:</label>
                     <input type="text" value={videoLikes} onChange={handleVideoLikesChange} />
+                </div>
+                <div>
+                    <label>Tags:</label>
+                    <input type="text" value={videoTags} onChange={handleVideoTagsChange} />
                 </div>
                 <div className="buttons">
                     <button type="button" onClick={handleSave} disabled={!isFormValid}>
